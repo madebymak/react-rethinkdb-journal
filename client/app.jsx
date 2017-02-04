@@ -7,6 +7,7 @@ var ReactDOM = require('react-dom');
 var ReactRethinkdb = require('react-rethinkdb');
 
 import Create from './create.jsx';
+import List from './list.jsx';
 
 var r = ReactRethinkdb.r;
 
@@ -36,7 +37,7 @@ var App = React.createClass({
   },
 
   handleSubmit: function(textInput, happinessInput, sentimentScore) {
-    console.log(textInput, happinessInput, sentimentScore);
+    // console.log(textInput, happinessInput, sentimentScore);
     var query = r.table('turtles').insert({
       text: textInput,
       happy: happinessInput,
@@ -46,22 +47,12 @@ var App = React.createClass({
   },
 
   render: function() {
-    var turtleDivs = this.data.turtles.value().map(function(data) {
-      return <div key={data.id}>
-                <p>happy: {data.happy} <br/>
-                text: {data.text} <br/>
-                score: {data.score} </p>
-             </div>;
-    });
     return <div>
       <h1> Happiness Journal </h1>
       <Create handleSubmit={this.handleSubmit} />
-
-      <h2>Recent</h2>
-      {turtleDivs}
+      <List turtles={this.data.turtles} />
     </div>;
   },
 });
 
-// Render the App component into the <div id="app"> element on index.html
 ReactDOM.render(<App />, document.getElementById('app'));
