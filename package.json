@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/index.js",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,11 @@
     "react-dom": "^15.4.2",
     "react-rethinkdb": "^0.6.0",
     "rethinkdb-websocket-server": "^0.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-react": "^6.22.0",
+    "webpack": "^2.2.1"
   }
 }
