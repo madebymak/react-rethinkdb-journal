@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import css from './create.css'
 
 class CreateEntries extends Component {
 

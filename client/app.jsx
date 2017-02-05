@@ -11,6 +11,9 @@ var ReactRethinkdb = require('react-rethinkdb');
 import Create from './create.jsx';
 import List from './list.jsx';
 import css from './app.css';
+// import Grid from 'react-bootstrap/lib/Grid';
+import { Grid, Row, Col } from 'react-bootstrap';
+
 
 var r = ReactRethinkdb.r;
 
@@ -52,17 +55,35 @@ var App = React.createClass({
 
 //Reloads List component
   componentDidUpdate() {
-    console.log("updated");
+    // console.log("updated");
     const query = r.table('turtles').orderBy(r.desc("score"))
     ReactRethinkdb.DefaultSession.runQuery(query);
   },
 
   render: function() {
-    return <div className="brd">
+    return <Grid>
+      <Row>
+        <Col className="brd" xs={12} md={12}>
+           <h1> Happiness Journal </h1>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col className="brd content" xs={6}>
+          <Create handleSubmit={this.handleSubmit} />
+        </Col>
+
+        <Col className="brd content" xs={6}>
+          <List turtles={this.data.turtles} />
+        </Col>
+      </Row>
+    </Grid>
+
+    {/* <div className="main">
       <h1> Happiness Journal </h1>
       <Create handleSubmit={this.handleSubmit} />
       <List turtles={this.data.turtles} />
-    </div>;
+    </div>; */}
   },
 });
 
