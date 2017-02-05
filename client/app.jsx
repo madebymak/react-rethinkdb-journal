@@ -10,6 +10,7 @@ var ReactRethinkdb = require('react-rethinkdb');
 
 import Create from './create.jsx';
 import List from './list.jsx';
+import css from './app.css';
 
 var r = ReactRethinkdb.r;
 
@@ -57,7 +58,7 @@ var App = React.createClass({
   },
 
   render: function() {
-    return <div>
+    return <div className="brd">
       <h1> Happiness Journal </h1>
       <Create handleSubmit={this.handleSubmit} />
       <List turtles={this.data.turtles} />

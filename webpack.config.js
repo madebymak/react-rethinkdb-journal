@@ -10,7 +10,8 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: ['babel-loader'],
         include: __dirname + '/client'
-      }
-    ]
+      },
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+    ],
   }
 };
