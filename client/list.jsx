@@ -7,7 +7,7 @@ class List extends Component {
     const turtleDivs = this.props.turtles.value();
 
     const sorted = turtleDivs.sort(function(a, b) {
-                    return a.value - b.value;
+                    return b.score - a.score;
                   });
 
     const turlesList =
@@ -21,7 +21,7 @@ class List extends Component {
 
     return (
       <div className="App">
-        <h2>Recent</h2>
+        <h2>Recent Based on Sentiment</h2>
         {turlesList}
       </div>
     );

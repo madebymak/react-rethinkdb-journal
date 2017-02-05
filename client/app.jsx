@@ -46,6 +46,20 @@ var App = React.createClass({
     ReactRethinkdb.DefaultSession.runQuery(query);
   },
 
+//Reloads List component
+
+  componentDidUpdate() {
+    console.log("updated");
+    var query = r.table('turtles').orderBy(r.desc("score"))
+    ReactRethinkdb.DefaultSession.runQuery(query);
+  // only update chart if the data has changed
+  // if (prevProps.data !== this.props.data) {
+  //   this.chart = c3.load({
+  //     data: this.props.data
+  //   });
+  // }
+},
+
   render: function() {
     return <div>
       <h1> Happiness Journal </h1>
