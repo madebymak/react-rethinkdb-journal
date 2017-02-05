@@ -17,8 +17,6 @@ import Col from 'react-bootstrap/lib/Col';
 import Button from 'react-bootstrap/lib/button';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-
-
 var r = ReactRethinkdb.r;
 
 // Open a react-rethinkdb session (a WebSocket connection to the server)
@@ -48,7 +46,6 @@ var App = React.createClass({
   },
 
   handleSubmit(textInput, happinessInput, sentimentScore) {
-    // console.log(textInput, happinessInput, sentimentScore);
     const query = r.table('turtles').insert({
       text: textInput,
       happy: happinessInput,
@@ -59,7 +56,6 @@ var App = React.createClass({
 
 //Reloads List component
   componentDidUpdate() {
-    // console.log("updated");
     const query = r.table('turtles').orderBy(r.desc("score"))
     ReactRethinkdb.DefaultSession.runQuery(query);
   },

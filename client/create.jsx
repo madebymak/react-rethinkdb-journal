@@ -3,7 +3,6 @@ import css from './create.css';
 import Slider from 'material-ui/Slider';
 import Button from 'react-bootstrap/lib/button';
 
-
 class CreateEntries extends Component {
   constructor(props, context) {
   super(props, context);
@@ -39,7 +38,7 @@ class CreateEntries extends Component {
           </textarea></p>
           <h2>How happy do you feel today?</h2>
           <h3>{this.state.slider}</h3>
-          <Slider min={-10} max={10} defaultValue={1} step={1} value={this.state.slider} onChange={this.handleSecondSlider.bind(this)} />
+          <Slider min={-10} max={10} defaultValue={0} step={1} value={this.state.slider} onChange={this.handleSecondSlider.bind(this)} />
           <Button bsSize="large" disabled={!this.state.text} onClick={ this.handleCreate.bind(this)}>Submit</Button>
         </form>
       </div>

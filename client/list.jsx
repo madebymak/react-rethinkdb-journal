@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import css from './list.css';
 
 class List extends Component {
 
   render() {
-    // console.log(this.props.turtles.value());
     const turtleDivs = this.props.turtles.value();
 
     const sorted = turtleDivs.sort(function(a, b) {
@@ -12,9 +12,9 @@ class List extends Component {
 
     const turlesList =
         sorted.map(function(data) {
-        return <div key={data.id}>
+        return <div className="entry" key={data.id}>
           <p>Happiness Level: {data.happy} <br/>
-          {data.text} <br/>
+          "{data.text}"<br/>
           Sentiment Score: {data.score} </p>
         </div>;
       });
