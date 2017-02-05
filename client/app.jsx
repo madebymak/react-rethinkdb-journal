@@ -10,6 +10,12 @@ var ReactRethinkdb = require('react-rethinkdb');
 
 import Create from './create.jsx';
 import List from './list.jsx';
+import css from './app.css';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import Button from 'react-bootstrap/lib/button';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 var r = ReactRethinkdb.r;
 
@@ -40,7 +46,6 @@ var App = React.createClass({
   },
 
   handleSubmit(textInput, happinessInput, sentimentScore) {
-    // console.log(textInput, happinessInput, sentimentScore);
     const query = r.table('turtles').insert({
       text: textInput,
       happy: happinessInput,
@@ -51,17 +56,31 @@ var App = React.createClass({
 
 //Reloads List component
   componentDidUpdate() {
-    console.log("updated");
     const query = r.table('turtles').orderBy(r.desc("score"))
     ReactRethinkdb.DefaultSession.runQuery(query);
   },
 
   render: function() {
-    return <div>
-      <h1> Happiness Journal </h1>
-      <Create handleSubmit={this.handleSubmit} />
-      <List turtles={this.data.turtles} />
-    </div>;
+    return  <MuiThemeProvider>
+    <Grid className="brd main" fluid={true}>
+      <Row>
+        <Col className="brd header" xs={12}>
+           <h1> Happiness Journal </h1>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col className="brd text-input" xs={12}>
+          <Create handleSubmit={this.handleSubmit} />
+        </Col>
+
+        <Col className="brd list" xs={12}>
+          <List turtles={this.data.turtles} />
+        </Col>
+
+      </Row>
+    </Grid>
+  </MuiThemeProvider>
   },
 });
 
