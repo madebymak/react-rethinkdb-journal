@@ -6,3 +6,7 @@
   background: transparent;
   border: 2px solid rgba(0,0,0,.075);
 }
+
+.journal {
+  font-size: 18px;
+}

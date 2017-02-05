@@ -13,15 +13,15 @@ class List extends Component {
     const turlesList =
         sorted.map(function(data) {
         return <div key={data.id}>
-          <p>happy: {data.happy} <br/>
-          text: {data.text} <br/>
-          score: {data.score} </p>
+          <p>Happiness Level: {data.happy} <br/>
+          {data.text} <br/>
+          Sentiment Score: {data.score} </p>
         </div>;
       });
 
     return (
       <div>
-        <h2>Recent Based on Sentiment</h2>
+        <h2>Top Sentiment Score</h2>
         {turlesList}
       </div>
     );
