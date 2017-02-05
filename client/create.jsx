@@ -6,7 +6,7 @@ class CreateEntries extends Component {
     event.preventDefault();
     const textInput = this.refs.message.value;
     const happinessInput = this.refs.happy.value;
-    const sentimentScore = textInput.length * happinessInput;
+    const sentimentScore = textInput.split(" ").length * happinessInput;
     this.props.handleSubmit(textInput, happinessInput, sentimentScore);
     this.refs.journal.reset();
   }
