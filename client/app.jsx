@@ -1,4 +1,6 @@
-// import React from 'react';
+//Currently a mix of ES5 and ES6 which I know is bad :(
+
+// import React, { Component } from 'react';
 // import ReactDOM from 'react';
 // import ReactRethinkdb from 'react-rethinkdb';
 
@@ -20,12 +22,13 @@ ReactRethinkdb.DefaultSession.connect({
   db: 'test',        // default database, passed to rethinkdb.connect
 });
 
-// Create our React component
+// Create our React component ES5
 var App = React.createClass({
 
   // Enable RethinkDB query subscriptions in this component
   mixins: [ReactRethinkdb.DefaultMixin],
 
+//obsolete way of interacting with db
   observe: function(props, state) {
     return {
       turtles: new ReactRethinkdb.QueryRequest({
@@ -36,9 +39,9 @@ var App = React.createClass({
     };
   },
 
-  handleSubmit: function(textInput, happinessInput, sentimentScore) {
+  handleSubmit(textInput, happinessInput, sentimentScore) {
     // console.log(textInput, happinessInput, sentimentScore);
-    var query = r.table('turtles').insert({
+    const query = r.table('turtles').insert({
       text: textInput,
       happy: happinessInput,
       score: sentimentScore
@@ -49,9 +52,9 @@ var App = React.createClass({
 //Reloads List component
   componentDidUpdate() {
     console.log("updated");
-    var query = r.table('turtles').orderBy(r.desc("score"))
+    const query = r.table('turtles').orderBy(r.desc("score"))
     ReactRethinkdb.DefaultSession.runQuery(query);
-},
+  },
 
   render: function() {
     return <div>
