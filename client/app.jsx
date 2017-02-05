@@ -11,8 +11,12 @@ var ReactRethinkdb = require('react-rethinkdb');
 import Create from './create.jsx';
 import List from './list.jsx';
 import css from './app.css';
-// import Grid from 'react-bootstrap/lib/Grid';
-import { Grid, Row, Col } from 'react-bootstrap';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import Button from 'react-bootstrap/lib/button';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 
 var r = ReactRethinkdb.r;
@@ -61,29 +65,26 @@ var App = React.createClass({
   },
 
   render: function() {
-    return <Grid>
+    return  <MuiThemeProvider>
+    <Grid className="brd main" fluid={true}>
       <Row>
-        <Col className="brd" xs={12} md={12}>
+        <Col className="brd header" xs={12}>
            <h1> Happiness Journal </h1>
         </Col>
       </Row>
 
       <Row>
-        <Col className="brd content" xs={6}>
+        <Col className="brd text-input" xs={12}>
           <Create handleSubmit={this.handleSubmit} />
         </Col>
 
-        <Col className="brd content" xs={6}>
+        <Col className="brd list" xs={12}>
           <List turtles={this.data.turtles} />
         </Col>
+
       </Row>
     </Grid>
-
-    {/* <div className="main">
-      <h1> Happiness Journal </h1>
-      <Create handleSubmit={this.handleSubmit} />
-      <List turtles={this.data.turtles} />
-    </div>; */}
+  </MuiThemeProvider>
   },
 });
 

@@ -20,7 +20,7 @@ class List extends Component {
       });
 
     return (
-      <div className="App">
+      <div>
         <h2>Recent Based on Sentiment</h2>
         {turlesList}
       </div>
