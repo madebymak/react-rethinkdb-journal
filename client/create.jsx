@@ -26,7 +26,7 @@ class CreateEntries extends Component {
     let happinessInput = this.state.slider;
     let sentimentScore = textInput.split(" ").length * happinessInput;
     this.props.handleSubmit(textInput, happinessInput, sentimentScore);
-    this.refs.journal.reset();
+    this.setState({text: ""});
   }
 
   render() {
